@@ -1,0 +1,94 @@
+:root{
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', sans-serif;
+    --primario: #A0C5F7;
+    --headersNav: #5783BC;
+    --botonVerde: #7DF89F;
+    --botonRojo: #F87D7D;
+    --blanco: #ffffff;
+    --negro: #000000;
+    --gris: #e1e1e1;
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+,::before, *::after{
+    box-sizing: inherit;
+}
+body {
+    margin: 0 auto;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 2rem;
+}
+.header{
+    background-color: var(--headersNav);
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ancho completo */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+@media (min-width:992px)
+{
+   .header{ 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+   }
+}
+.navegacion-principal {
+    list-style-type: none;
+    padding: 2%; /* o padding: 0!important; para asegurarse de que se anule cualquier otro estilo que lo esté aplicando */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navegacion-principal a{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-decoration: none;
+    margin-top: 1.8rem;
+    color: var(--primario);
+}
+@media (min-width:867px){
+    .navegacion-principal a{
+        display: inline;
+        align-items: center;
+        margin-right: 2.2rem;
+        margin-left: 2.2rem;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--primario);
+
+    }
+
+    .logo-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: auto;
+        color: var(--primario);
+        margin-left: 2rem;
+        margin-bottom: 0;
+    }
+}
+
+.logo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: auto;
+    color: var(--primario);
+    margin-bottom: 0;
+}
+
+.logo-header img {
+    max-width: 8rem;
+}
+
+.navegacion-principal ul {
+    padding-left: 0;
+}

@@ -13,8 +13,8 @@
             border: none;
         }
         th, td {
-             
-            border-bottom: 3px solid #0F5F8C;
+            border-left: 1px solid #0F5F8C; 
+            border-bottom: 1px solid #0F5F8C;
             text-align: center;
             padding: 8px;
             color: #5783BC;
@@ -95,6 +95,11 @@
             #search{
                 width: 350px;
             }
+            .grid-container {
+                display: flex;
+                flex-direction: column; 
+            }
+
         }
         @media (max-width: 480px) {
             .div {    
@@ -113,46 +118,65 @@
                 width: 200px;
             }
         }
+        .my-image {
+            width: 150px;
+            height: 150px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            align-items: start;
+        }
     </style>
 </head>
 <body>
-    <br><br>
+    <br>
+    <div class="grid-container div container">
+        <div class="grid-column" style="margin-left: 450px;">
+            <img src="images/Trofeo.png" alt="" class="my-image">
+        </div>
+        <div class="grid-column">
+        <span>Nombre:</span><span>#</span><br>
+        <span>Nombre de usuario:</span><span>#</span><br>
+        <span>Carros lavados:</span><span>#</span><br>
+        <span>Correo:</span><span>#</span><br>
+        <br><button class="btn" style="background-color: #5783BC;" >Reporte PDF</button></td>
+        </div>
+    </div>
     <div class="div container" >
-        <span>Empleado</span>
+        <span>Responsable</span>
         <div class="search-container">
-            <input type="text" name="search" id="search"  placeholder="Buscar empleado...">
+            <input type="text" name="search" id="search"  placeholder="Buscar responsable...">
             <img src="images/ImgBuscar.png" alt="Buscar" class="search-icon">
         </div>
-        <button class="btn" style="background-color: #D9D9D9;">
-            <img src="images/ImgAgregarUsuario.png" style="height: 25px; vertical-align: middle;">
-        </button>
     </div>
-    <br><br>
+    <br>
     <div class="div">
         <table>
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Nombre de Usuario</th>
-                    <th>Correo</th>
-                    <th>Contraseña</th>
-                    <th>Acciones</th>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Costo</th>
+                    <th>Responsable</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Aquí se mostrarían los datos de la tabla -->
                 <tr>
                     <td>Ejemplo Nombre</td>
-                    <td>Ejemplo Usuario</td>
-                    <td>ejemplo@correo.com</td>
-                    <td>********</td>
-                    <td class="container">
-                        <button class="btn" style="background-color: #7DF89F;" >Editar</button>
-                        <button class="btn" style="background-color: #F87D7D;">Eliminar</button>
-                    </td>
+                    <td>Ejemplo Placa</td>
+                    <td>Ejemplo Modelo</td>
+                    <td>Ejemplo Costo</td>
+                    <td>Ejemplo Responsable</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <br>
+    <div class="div container">
+    <button class="btn" style="background-color: #5783BC;" >Reporte del historial de tareas</button>
     </div>
     <script>
         function search() {
