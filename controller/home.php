@@ -5,5 +5,5 @@ require_once 'helpers.php';
 $tipoUsuario = obtenerTipoUsuario();
 
 $p = array('tipoUsuario' => $tipoUsuario);
-View('paginaInicio', $p);
+View('historialTareas', $p);
 ?>

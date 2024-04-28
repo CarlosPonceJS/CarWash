@@ -17,7 +17,7 @@
    
 
     require_once('controller/header.php');
-    $permisos = 1;
+    $permisos = 2;
 
     // Carga el header según los permisos del usuario
     echo cargarHeader($permisos);

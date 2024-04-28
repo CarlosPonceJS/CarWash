@@ -1,0 +1,339 @@
+:root{
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', sans-serif;
+    
+    --primario: #A0C5F7;
+    --headersNav: #5783BC;
+    --botonVerde: #7DF89F;
+    --botonRojo: #F87D7D;
+    --blanco: #ffffff;
+    --negro: #000000;
+    --gris: #e1e1e1;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,*::before, *::after{
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0 auto;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 2rem;
+}
+/*Modales*/
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btnModal{
+
+}
+
+.modal-content {
+    margin: 15% auto;
+    background-color: var(--blanco); 
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 50rem;
+    text-align: center;
+    color: var(--negro);
+}
+
+
+.modal-header {
+    display: flex;
+    flex-direction: row;
+    background-color: #603ACD; 
+    color: var(--blanco);
+    border-bottom: 1px solid var(--blanco);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body {
+    padding: 20px 0;
+}
+
+.modal-footer {
+    padding-top: 10px;
+    border-top: 1px solid white;
+}
+
+.btnSubmit,
+.btnCancel, .btnModal, .btnFinalizar, .btnGris {
+    background-color: var(--botonVerde);
+    color: var(--blanco);
+    border-radius: 1.2rem;
+    width: 20rem;
+    height: 4rem;
+    border: .1rem seashell var(--negro);
+    animation: desplegar 0.3s ease-out; 
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btnSubmit:hover,
+.btnCancel:hover, .btnModal:hover,.btnFinalizar:hover  {
+    cursor: pointer;
+}
+
+.btnSubmit:not(.btnModal)[disabled] {
+    background-color: #ccc; /* Color gris */
+}
+
+.btnCancel {
+    background-color: var(--botonRojo);
+}
+
+/* Headers */
+
+.header{
+    background-color: var(--headersNav);
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ancho completo */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+@media (min-width:992px){
+   .header{ 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+   }
+    }
+    .navegacion-principal {
+        list-style-type: none;
+        padding: 2%; /* o padding: 0!important; para asegurarse de que se anule cualquier otro estilo que lo esté aplicando */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+
+
+
+.navegacion-principal a{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-decoration: none;
+    margin-top: 1.8rem;
+    color: var(--primario);
+}
+
+
+@media (min-width:867px){
+    .navegacion-principal a{
+        display: inline;
+        align-items: center;
+        margin-right: 2.2rem;
+        margin-left: 2.2rem;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--primario);
+
+    }
+
+    .logo-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: auto;
+        color: var(--primario);
+        margin-left: 2rem;
+        margin-bottom: 0;
+    }
+}
+
+.logo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: auto;
+    color: var(--primario);
+    margin-bottom: 0;
+}
+
+.logo-header img {
+    max-width: 8rem;
+}
+
+.navegacion-principal ul {
+    padding-left: 0;
+}
+
+/* Estilos base para tablas */
+table {
+    border-collapse: collapse; 
+    width: 100%;
+    border: none;
+}
+
+th, td {
+    border-bottom: 3px solid #0F5F8C;
+    text-align: center;
+    padding: 8px;
+    color: #5783BC;
+    vertical-align: middle;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+th:first-child, td:first-child {
+    border-left: none; 
+}
+
+tr:last-child td {
+    border-bottom: none; 
+}
+
+/* Estilos para inputs y botones */
+input[type="submit"], input[type="text"], .btn, .btni, .btnc {
+    padding: 5px 10px;
+    margin-right: 5px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    font-size: 14px;
+}
+
+.btn, .btni, .btnc {
+    border: 2px solid #D9D9D9;
+}
+
+.btni {
+    height: 30px;
+}
+.btnc {
+    height: 30px;
+}
+
+/* Estilos de contenedor y división */
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.div {
+    margin: 10px 70px 5px;
+}
+
+/* Estilos de formularios y elementos de formulario */
+span, select {
+    padding: 5px 10px;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    font-size: 16px;
+    color: #5783BC;
+    cursor: pointer;
+}
+.spani {
+    padding: 5px 10px;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    font-size: 16px;
+    color: #5783BC;
+    cursor: pointer;
+}
+select {
+    width: 300px;
+    border: 2px solid #5783BC;
+    border-radius: 6px;
+    background-color: white;
+}
+.nuevoSelect {
+    width: 300px;
+    border: 2px solid #5783BC;
+    border-radius: 6px;
+    background-color: white;
+}
+select option {
+    color: #5783BC;
+}
+
+/* Contenedor de búsqueda */
+.search-container {
+    position: relative;
+}
+
+#search {
+    width: 700px;
+    height: 30px;
+    padding-right: 30px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+/* Media Queries para responsividad 
+@media (max-width: 768px) {
+    .div, table, th, td, .btn, select {
+        margin-right: 10px;
+        margin-left: 10px;
+        font-size: 14px;
+    }
+    select, #search {
+        width: 200px;
+    }
+}*/
+
+@media (max-width: 866px) {
+    .div, table, th, td, .btn, select {
+        margin-right: 5px;
+        margin-left: 5px;
+        font-size: 12px;
+    }
+    select, .btn, #search {
+        width: 300px;
+    }
+    .nuevoSelect, .btni {
+        width: 100px;
+    }
+    .btni {
+        height: 40px;
+    }
+    .btnc {
+        height: 30px;
+    }
+    .spani{
+        font-size: 12px;
+    }
+}
+.my-image {
+    width: 150px;
+    height: 150px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    align-items: center;
+}
+.first-column{
+    justify-self: end;
+}

@@ -2,24 +2,23 @@
 function cargarHeader($permisos){
     ob_start(); // Inicia el almacenamiento en búfer de salida
     ?>
-
     <!-- Contenido del header -->
-    <header>
-        <div>
-            <i class="fa fa-tasks"></i>
-            <span>Logo</span>
+    <header class="header">
+        <div class="logo-header">
+            <img src="./images/LogoAuto.png" alt="Logotipo auto">
+            <span>CarWash</span>
         </div>
-        <nav>
+        <nav class="navegacion-principal" >
             <ul>
                 <?php if ($permisos == 1) { ?>
-                    <li><a href="#">Tareas</a></li>
-                    <li><a href="#">Registrar Compra</a></li>
+                    <a href="#">Tareas</a>
+                    <a href="#">Registrar Compra</a>
                 <?php } elseif ($permisos == 2) { ?>
-                    <li><a href="#">Empleados</a></li>
-                    <li><a href="#">Asignar Tarea</a></li>
-                    <li><a href="#">Historial de Tareas</a></li>
+                    <a href="#">Empleados</a>
+                    <a href="#">Asignar Tarea</a>
+                    <a href="#">Historial de Tareas</a>
                 <?php } ?>
-                <li><a href="#">Cerrar Sesión</a></li>
+                <a href="#">Cerrar Sesión</a>
             </ul>
         </nav>
     </header>

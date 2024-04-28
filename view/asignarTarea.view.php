@@ -15,40 +15,32 @@
     </style>
 </head>
 <body>
-    <br><br>
-    <div class="div container" >
-        <span>Empleado</span>
-        <div class="search-container">
-            <input type="text" name="search" id="search"  placeholder="Buscar empleado...">
-            <img src="images/ImgBuscar.png" alt="Buscar" class="search-icon">
-        </div>
-        <button class="btnc" style="background-color: #D9D9D9;">
-            <img src="images/ImgAgregarUsuario.png" style="height: 25px; vertical-align: middle;">
-        </button>
-    </div>
-    <br><br>
+    <br><br><br>
     <div class="div">
         <table>
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Nombre de Usuario</th>
-                    <th>Correo</th>
-                    <th>Contraseña</th>
-                    <th>Acciones</th>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Responsable</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Aquí se mostrarían los datos de la tabla -->
-                <tr id="empleado1">
+                <tr id="Tarea1">
                     <td>Ejemplo Nombre</td>
-                    <td>Ejemplo Usuario</td>
-                    <td>ejemplo@correo.com</td>
-                    <td>********</td>
-                    <td class="container">
-                        <button class="btni Editar" style="background-color: #7DF89F;" >Editar</button>
-                        <button class="btni" style="background-color: #F87D7D;" onclick="mostrarModal(this, 'empleado1')">Eliminar</button>
+                    <td>Ejemplo Placa</td>
+                    <td>Ejemplo Modelo</td>
+                    <td>    
+                        <select class="nuevoSelect" name="empleadoEncargado" id="empleadoEncargado">
+                            <option value="Juan">Juan</option>
+                            <option value="Ulises">Ulises</option>
+                            <option value="Carlos">Carlos</option>
+                        </select>
                     </td>
+                    <td><button class="btni" style="background-color: #7DF89F;" onclick="mostrarModal(this, 'Tarea1')" >Asignar</button></td>
                 </tr>
             </tbody>
         </table>
@@ -56,18 +48,19 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>¡ATENCIÓN!</h2>
+                <h2>¡ADVERTENCIA!</h2>
             </div>
             <div class="modal-body">
-                <p id="modal-message">El empleado se eliminará permanentemente. ¿Desea continuar?</p>
+                <p id="modal-message">Una vez asignada la tarea no se podrá hacer ninguna modificación. ¿Desea continuar?</p>
             </div>
             <div class="modal-footer">
-                <button id="eliminarEmpleado" class="btnModal" onclick="cerrarModal()">Continuar</button>
+                <button id="asignarTarea" class="btnModal" onclick="cerrarModal()">Continuar</button>
                 <button id="cancelar" class="btnCancel" onclick="cerrarModal()">Cancelar</button>
             </div>
         </div>
     </div>
     <script>
+
         function mostrarModal(button, actividadId) {
             document.getElementById('modal').style.display = 'flex';
         }
