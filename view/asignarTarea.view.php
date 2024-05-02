@@ -1,4 +1,4 @@
-<?php include('headerAdmin.view.php'); ?>
+<?php include('header.view.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/normalizer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="./css/styleJaz.css">
     <title>CRUD</title>
     <style>
@@ -29,7 +30,7 @@
             </thead>
             <tbody>
                 <!-- Aquí se mostrarían los datos de la tabla -->
-                <tr id="Tarea1">
+                <tr class="animate__animated animate__slideInUp" id="Tarea1">
                     <td>Ejemplo Nombre</td>
                     <td>Ejemplo Placa</td>
                     <td>Ejemplo Modelo</td>

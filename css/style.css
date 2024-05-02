@@ -98,6 +98,11 @@ body {
     margin-bottom: 0;
 }
 
+.header span {
+    color: var(--primario);
+
+}
+
 .logo-header img {
     max-width: 8rem;
 }
@@ -441,6 +446,11 @@ body {
 
 }
 
+.auto-imagen {
+    max-width: 1rem; /* Define el ancho máximo de la imagen */
+    height: auto; 
+}
+
 .modal-content {
     margin: 15% auto;
     background-color: var(--blanco); 
@@ -493,10 +503,6 @@ body {
     opacity: 0.5;
 }
 
-.en-proceso {
-    background-color: yellow; /* Por ejemplo, cambia el color de fondo */
-}
-
 
 table {
     border-collapse: collapse; 
@@ -504,7 +510,6 @@ table {
     border: none;
 }
 th, td {
-     
     border-bottom: 3px solid #0F5F8C;
     text-align: center;
     padding: 8px;
@@ -517,10 +522,64 @@ th, td {
 th:first-child, td:first-child {
     border-left: none; 
 }
-
 tr:last-child td {
     border-bottom: none; 
 }
+
+@media (min-width: 768px) {
+    .contenedor {
+        max-width: 80%; 
+        margin: 0 auto; 
+    }
+
+    .auto-imagen {
+        max-width: 100%;
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .contenedor {
+        max-width: 95%;
+    }
+
+    .auto-imagen {
+        max-width: 50%; /* Reduce el ancho máximo de la imagen */
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+/* Estilos para pantallas pequeñas */
+@media (max-width: 549px) {
+    /* Cambia la dirección de los elementos en la tabla */
+    table {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+    }
+
+    /* Asegura que cada fila ocupe el ancho completo */
+    tr {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid #ddd; /* Añade un borde inferior a cada fila */
+        padding: 8px; /* Añade espacio entre filas */
+    }
+
+    /* Estilos adicionales para las celdas */
+    th, td {
+        text-align: center; /* Centra el texto horizontalmente */
+        padding: 8px;
+        border: none;
+        width: 100%; /* Asegura que las celdas ocupen el ancho completo de la fila */
+    }
+}
+
+
 
 
 .btn {
@@ -575,6 +634,12 @@ span {
         font-size: 14px;
     }
    
+}
+
+
+
+.tr-oculto {
+    opacity: 0;
 }
 
 

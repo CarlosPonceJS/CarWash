@@ -149,17 +149,19 @@ body {
         text-decoration: none;
         color: var(--primario);
 
-    }
+}
 
-    .logo-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-right: auto;
-        color: var(--primario);
-        margin-left: 2rem;
-        margin-bottom: 0;
-    }
+.logo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: auto;
+    color: var(--primario);
+    margin-left: 2rem;
+    margin-bottom: 0;
+}
+
+
 }
 
 .logo-header {
@@ -171,6 +173,11 @@ body {
     margin-bottom: 0;
 }
 
+.header span {
+    color: var(--primario);
+
+}
+
 .logo-header img {
     max-width: 8rem;
 }
@@ -178,14 +185,13 @@ body {
 .navegacion-principal ul {
     padding-left: 0;
 }
-
 /* Estilos base para tablas */
 table {
     border-collapse: collapse; 
     width: 100%;
     border: none;
+    overflow-x: auto; /* Agregado para permitir desplazamiento horizontal en dispositivos pequeños */
 }
-
 th, td {
     border-bottom: 3px solid #0F5F8C;
     text-align: center;
@@ -195,6 +201,7 @@ th, td {
     font-family: 'Comfortaa', cursive;
     font-weight: 700;
     font-size: 16px;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
 
 th:first-child, td:first-child {
@@ -220,11 +227,13 @@ input[type="submit"], input[type="text"], .btn, .btni, .btnc {
     border: 2px solid #D9D9D9;
 }
 
-.btni {
+.btni, .btnc {
     height: 30px;
 }
-.btnc {
-    height: 30px;
+
+.btni:hover,
+.btnc:hover {
+    cursor: pointer;
 }
 
 /* Estilos de contenedor y división */
@@ -336,4 +345,50 @@ select option {
 }
 .first-column{
     justify-self: end;
+}
+
+@media screen and (max-width: 900px) {
+    table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        overflow-x: auto;
+        border-spacing: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    th, td {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    th {
+        display: none; /* Oculta las etiquetas de encabezado */
+    }
+
+    tr {
+        display: block;
+    }
+
+    td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+
+    td {
+        padding: 8px;
+    }
+
+    tr td:last-child {
+        border-bottom: .5rem solid var(--primario);
+    }
 }

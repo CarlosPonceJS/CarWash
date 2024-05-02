@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/normalizer.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/normalizer.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Tabla de Tareas</title>
 </head>
 <body>
@@ -39,7 +39,7 @@
                 <td>Costo de la Tarea 2</td>
                 <td>Responsable 2</td>
             </tr>
-            <!-- Agrega más filas según necesites -->
+           
         </tbody>
     </table>
 
@@ -47,7 +47,6 @@
 
     <script>
         function imprimirPDF() {
-            // Aquí iría la lógica para generar y descargar el PDF
             alert('Generando y descargando PDF...');
         }
     </script>

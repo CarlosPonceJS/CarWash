@@ -1,6 +1,7 @@
 <?php include('header.view.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,35 +9,49 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/normalizer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Tabla de Carros a Lavar</title>
+
+    <style>
+        .btnSubmit {
+            animation: none !important;
+        }
+    </style>
 </head>
+
 <body>
-    <table class="contenedor">
-        <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Placas</th>
-                <th>Dueño</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="carro1">
-                <td><img src="ruta-de-la-imagen-1.jpg" alt="Carro 1"></td>
+    <div id="tablaContenedor" style="display: none;">
+        <table class="contenedor">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Placas</th>
+                    <th>Dueño</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr id="carro1" class="animate__animated">
+            <td><img src="./images/autoPrueba.webp" alt="Carro 1" class="auto-imagen" style="max-width: 20rem; height: auto;"></td>
                 <td>ABC-123</td>
                 <td>Juan Pérez</td>
                 <td><button class="btn btnSubmit" onclick="mostrarModal(this, 'carro1')">Realizar</button></td>
             </tr>
-            <tr id="carro2">
-                <td><img src="ruta-de-la-imagen-2.jpg" alt="Carro 2"></td>
+            <tr id="carro2" class="animate__animated tr-oculto">
+            <td><img src="./images/autoPrueba.webp" alt="Carro 1" class="auto-imagen" style="max-width: 20rem; height: auto;"></td>
                 <td>DEF-456</td>
                 <td>María Rodríguez</td>
                 <td><button class="btn btnSubmit" onclick="mostrarModal(this, 'carro2')">Realizar</button></td>
             </tr>
-            <!-- Agregar lógica de la base de datos, tiren paro equipo de back end-->
-        </tbody>
-    </table>
+
+
+
+                <!-- Agregar lógica de la base de datos, tiren paro equipo de back end-->
+            </tbody>
+        </table>
+    </div>
+
 
     <div id="modal" class="modal">
         <div class="modal-content">
@@ -125,6 +140,22 @@
                 btn.disabled = false;
             });
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('tablaContenedor').style.display = 'block';
+    var rows = document.querySelectorAll('tr.animate__animated');
+    rows.forEach((row, index) => {
+        setTimeout(() => {
+            row.classList.add('animate__slideInLeft');
+            if (index === 0) {
+                document.querySelector('.tr-oculto').classList.remove('tr-oculto');
+            }
+        }, index * 20);
+    });
+});
+
+
     </script>
 </body>
+
 </html>

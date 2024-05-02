@@ -82,7 +82,7 @@
     var tipoAuto = document.getElementById("tipoAutoCliente").value;
     var campoExtra = document.getElementById("campoExtra");
 
-    // Limpiar campo extra antes de mostrar uno nuevo
+    // Limpiar campo extra antes de mostrar uno nuevo. esto cambiara segun la logica del back end
     campoExtra.innerHTML = "";
 
     if (tipoAuto === "camioneta") {

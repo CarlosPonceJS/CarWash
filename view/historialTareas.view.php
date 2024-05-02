@@ -1,4 +1,4 @@
-<?php include('headerAdmin.view.php'); ?>
+<?php include('header.view.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="./css/normalizer.css">
     <link rel="stylesheet" href="./css/styleJaz.css">
     <title>CRUD</title>
@@ -20,11 +21,11 @@
         <div class="first-column">
             <img src="images/Trofeo.png" alt="" class="my-image">
         </div>
-        <div class="">
-            <span class="spani">Nombre:</span><span>#</span><br>
-            <span class="spani">Nombre de usuario:</span><span>#</span><br>
-            <span class="spani">Carros lavados:</span><span>#</span><br>
-            <span class="spani">Correo:</span><span>#</span><br>
+        <div class="animate__animated animate__slideInRight">
+            <span class="spani">Nombre:</span><span class="animate__animated animate__slideInRight">hola</span><br>
+            <span class="spani">Nombre de usuario:</span><span class="animate__animated animate__slideInLeft">#</span><br>
+            <span class="spani">Carros lavados:</span><span class="animate__animated animate__slideInLeft">#</span><br>
+            <span class="spani">Correo:</span><span class="animate__animated animate__slideInLeft">#</span><br>
             <br><button class="btni" style="background-color: #5783BC;" >Reporte PDF</button></td>
         </div>
     </div>
@@ -49,7 +50,7 @@
             </thead>
             <tbody>
                 <!-- Aquí se mostrarían los datos de la tabla -->
-                <tr>
+                <tr class="animate__animated animate__slideInUp">
                     <td>Ejemplo Nombre</td>
                     <td>Ejemplo Placa</td>
                     <td>Ejemplo Modelo</td>

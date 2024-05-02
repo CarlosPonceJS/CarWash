@@ -11,7 +11,7 @@
     <title>Formulario para actualizar empleado</title>
 </head>
 <body>
-    <?php include('headerAdmin.view.php'); ?>
+<?php include('header.view.php'); ?>
    
 
     <form class="bodyRegister" action="#" method="post">
@@ -85,12 +85,12 @@ document.getElementById('confirmar').addEventListener('click', function() {
 // Obtener todos los campos requeridos
 const camposRequeridos = document.querySelectorAll('[required]');
 
-// Función para verificar si todos los campos requeridos tienen información
+
 function verificarCampos() {
     return Array.from(camposRequeridos).every(campo => campo.value.trim() !== '');
 }
 
-// Función para habilitar o deshabilitar el botón de "Registrar"
+// habilitar o deshabilitar el botón de "Registrar"
 function actualizarEstadoBoton() {
     const btnSubmit = document.getElementById('btnSubmit');
     btnSubmit.disabled = !verificarCampos();

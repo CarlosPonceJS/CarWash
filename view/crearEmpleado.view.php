@@ -11,7 +11,7 @@
     <title>Formulario para agregar empleado</title>
 </head>
 <body>
-    <?php include('headerAdmin.view.php'); ?>
+<?php include('header.view.php'); ?>
    
 
     <form class="bodyRegister" action="#" method="post">

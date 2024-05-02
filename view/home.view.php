@@ -38,7 +38,6 @@
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
               ex ratione. Aliquid!
             </p>
-            <!-- Elimina el botón Sign up -->
           </div>
           <img src="./images/lavado-de-autos.png" class="image" alt="" />
         </div>
