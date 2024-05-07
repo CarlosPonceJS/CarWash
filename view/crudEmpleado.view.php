@@ -29,7 +29,9 @@
     </div>
     <br><br>
     <div class="div">
-        <table>
+    <?php echo $resultado;?>
+
+        <!-- <table>
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -40,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-    <!-- Aquí se mostrarían los datos de la tabla -->
+           
     <tr class="animate__animated animate__slideInUp" id="empleado1">
         <td>Ejemplo Nombre</td>
         <td>Ejemplo Usuario</td>
@@ -53,7 +55,7 @@
     </tr>
 </tbody>
 
-        </table>
+        </table> -->
     </div>
     <div id="modal" class="modal">
         <div class="modal-content">

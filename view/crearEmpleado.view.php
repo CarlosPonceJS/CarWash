@@ -34,12 +34,13 @@
         </div>
 
         <div class="input-group">
-            <input id="contraseña" type="text" name="contraseña" required>
-            <label for="contraseña">Contraseña:</label><br><br>
+            <input id="contrasena" type="text" name="contrasena" required>
+            <label for="contrasena">Contraseña:</label><br><br>
         </div>
 
         <input id="btnSubmit" class="btnSubmit" type="submit" value="Registrar">
-        <button class="btnCancel" > Cancelar </button>
+        <button id="btnCancel" type="button" onclick="location.href='mostrarUsuariosEmpleados'">Cancelar</button>
+
         </div>
 
         <div id="modal" class="modal">
