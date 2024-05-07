@@ -13,8 +13,8 @@
 <body>
     <?php include('header.view.php'); ?>
    
-
-    <form class="bodyRegister" action="#" method="post">
+                                                    <!--enctype: usado para que el input de las imagenes funcione -->
+    <form class="bodyRegister" action="registrarCompra" method="post" enctype="multipart/form-data">
         <div class="crudEmpleados"> 
         <h1 class="titulo">Registrar Compra</h1>
         <p id="mensaje-exito" class="mensaje-exito"></p>
@@ -44,7 +44,7 @@
 
         <div class="file-upload">
          <label for="file-input" class="file-upload-label">Seleccionar foto del auto</label>
-         <input required id="file-input" type="file" accept=".jpg, .jpeg, .png" />
+         <input required id="file-input" type="file" accept=".jpg, .jpeg, .png" name="foto" />
          <span id="file-name" class="file-name">Nombre del archivo: </span>
         </div>
 
@@ -78,7 +78,10 @@
     </form>
 
     <script>
-        function mostrarCampoExtra() {
+    document.addEventListener("DOMContentLoaded", function(){
+        mostrarCampoExtra();
+    })
+    function mostrarCampoExtra() {
     var tipoAuto = document.getElementById("tipoAutoCliente").value;
     var campoExtra = document.getElementById("campoExtra");
 
@@ -89,15 +92,20 @@
         // Campo extra para camioneta 
         campoExtra.innerHTML = 
             '<input type="number" id="puertas" name="puertas" required>' + '<label for="puertas">Número de Puertas:</label>'+
-            '<p>Precio: <span id="precioSpan">Insertar precio aquí</span></p>';
+            '<p>Precio: <span id="precioSpanCamioneta"></span></p>'; 
+            //Función añadida para mostrar el costo cuando cambia este input.
+            calcularCosto("puertas","precioSpanCamioneta",50);
     } else if (tipoAuto === "camion") {
         // Campo extra para camion
         campoExtra.innerHTML = 
-            '<input type="text" id="longitud" name="longitud" required>' + '<label for="longitud">Longitud del Camión:</label>' +
-            '<p>Precio: <span id="precioSpan">Insertar precio aquí</span></p>';
-    } else {
+            '<input type="number" id="longitud" name="longitud" required>' + '<label for="longitud">Longitud del Camión:</label>' +
+            '<p>Precio: <span id="precioSpan"></span></p>';
+            //Función añadida para mostrar el costo cuando cambia este input.
+            calcularCosto("longitud","precioSpan",100);
+    } else if(tipoAuto === "auto"){
         // Para cualquier otro tipo de auto 
-        campoExtra.innerHTML = '<p>Precio: <span id="precioSpan">Insertar precio aquí</span></p>';
+        campoExtra.innerHTML = '<p>Precio: <span id="precioSpan">80</span></p>';
+
     }
 }
 
@@ -130,6 +138,7 @@ document.getElementById('confirmar').addEventListener('click', function() {
     setTimeout(function() {
         document.getElementById('mensaje-exito').style.display = 'none';
     }, 5000);
+
 });
 
 
@@ -164,7 +173,15 @@ document.querySelector('form').addEventListener('submit', function(e) {
     }
 });
 
+//Calcular costo de lavado
+function calcularCosto(campo,precio,costo){
+    const caracteristica = document.getElementById(campo);
+    const etiquetaPrecio = document.getElementById(precio);
 
+    caracteristica.addEventListener("change", function(){
+            etiquetaPrecio.textContent = costo* caracteristica.value;
+    });
+}
 
     </script>
 </body>
