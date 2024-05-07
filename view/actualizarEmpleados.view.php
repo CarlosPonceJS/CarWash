@@ -12,34 +12,41 @@
 </head>
 <body>
 <?php include('header.view.php'); ?>
-   
+<?php if (isset($resultado) && is_array($resultado) && count($resultado) >= 5): ?>
+    <?php $idUsuario = htmlspecialchars($resultado[0]); ?>
+    <?php $nombre = htmlspecialchars($resultado[1]); ?>
+    <?php $usuario = htmlspecialchars($resultado[2]); ?>
+    <?php $correo = htmlspecialchars($resultado[3]); ?>
+    <?php $contrasena = htmlspecialchars($resultado[4]); ?>
+    <?php endif; ?>
 
+    <?php if (isset($resultado)): ?>
     <form class="bodyRegister" action="#" method="post">
         <div class="crudEmpleados"> 
         <h1 class="titulo">Actualizar empleado</h1>
         <p id="mensaje-exito" class="mensaje-exito"></p>
         <div class="input-group">
-            <input id="nombreEmpleado" type="text" name="nombre" required>
+            <input type="text" id="nombreEmpleado" name="nombre" value="<?php echo isset($nombre) ? $nombre : ''; ?>"><br><br>
             <label for="nombre">Nombre del empleado:</label>
             <br><br>
         </div>
 
         <div class="input-group">
-            <input id="nombreUsuario" type="text" name="usuario" required>
+            <input type="text" id="nombreUsuario" name="usuario" value="<?php echo isset($usuario) ? $usuario : ''; ?>"><br><br>
             <label for="usuario">Nombre de usuario:</label><br><br>
         </div>
         <div class="input-group">
-            <input id="correo" type="email" name="correo" required>
+            <input type="email" id="correo" name="correo" value="<?php echo isset($correo) ? $correo : ''; ?>"><br><br>
             <label for="correo">Correo:</label><br><br>
         </div>
 
         <div class="input-group">
-            <input id="contraseña" type="text" name="contraseña" required>
-            <label for="contraseña">Contraseña:</label><br><br>
+            <input type="password" id="contrasena" name="contrasena" value="<?php echo isset($contrasena) ? $contrasena : ''; ?>"><br><br>
+            <label for="contrasena">Contraseña:</label><br><br>
         </div>
-
+        <input type="hidden" id="idUsuarios" name="idUsuarios" value="<?php echo isset($idUsuario) ? $idUsuario : ''; ?>">
         <input id="btnSubmit" class="btnSubmit" type="submit" value="Registrar">
-        <button class="btnCancel" > Cancelar </button>
+        <button type="button" onclick="location.href='mostrarUsuariosEmpleados'">Cancelar</button>
         </div>
 
         <div id="modal" class="modal">
@@ -59,7 +66,7 @@
 
        
     </form>
-
+    <?php endif; ?>
     <script>
 
 document.getElementById('btnSubmit').addEventListener('click', function(e) {
