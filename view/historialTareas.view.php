@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="./css/normalizer.css">
     <link rel="stylesheet" href="./css/styleJaz.css">
+
     <title>CRUD</title>
     <style>
         
@@ -26,7 +27,7 @@
             <span class="spani">Nombre de usuario:</span><span class="animate__animated animate__slideInLeft">#</span><br>
             <span class="spani">Carros lavados:</span><span class="animate__animated animate__slideInLeft">#</span><br>
             <span class="spani">Correo:</span><span class="animate__animated animate__slideInLeft">#</span><br>
-            <br><button class="btni" style="background-color: #5783BC;" >Reporte PDF</button></td>
+            <br><button id="btnGenerarReporte" class="btni" style="background-color: #5783BC;" >Reporte PDF</button></td>
         </div>
     </div>
     <div class="div container" >
@@ -37,8 +38,9 @@
         </div>
     </div>
     <br>
-    <div class="div">
-        <table>
+    <div class="div" id="">
+    <?php echo $resultado;?>
+        <!-- <table>
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -49,7 +51,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí se mostrarían los datos de la tabla -->
                 <tr class="animate__animated animate__slideInUp">
                     <td>Ejemplo Nombre</td>
                     <td>Ejemplo Placa</td>
@@ -58,18 +59,22 @@
                     <td>Ejemplo Responsable</td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
     </div>
     <br>
     <div class="div container">
-    <button class="btn" style="background-color: #5783BC;" >Reporte del historial de tareas</button>
+    <button  class="btni" style="background-color: #5783BC;" id="">Reporte del historial de tareas</button>
     </div>
+   
+    
     <script>
         function search() {
             var searchValue = document.getElementById('search').value;
             // Realizar búsqueda con searchValue
             console.log('Buscar:', searchValue);
         }
+      
+
     </script>
 </body>
 </html>

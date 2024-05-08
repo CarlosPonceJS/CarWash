@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css"
   href="css/propio.css">
   <script src="dist/js/bootstrap.bundle.min.js"></script>
+  
 </head>
 <body>
   <div class="alert alert-success">

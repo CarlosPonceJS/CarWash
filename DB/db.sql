@@ -2,7 +2,7 @@ CREATE DATABASE carwash;
 CREATE TABLE usuarios(idUsuarios INT PRIMARY KEY AUTO_INCREMENT, 
 nombre VARCHAR(150), nombreUsuario VARCHAR(15),
 correo VARCHAR(50), contraseña VARCHAR(20));
-
+USE carwash;
 
 CREATE TABLE vehiculos(idVehiculos INT PRIMARY KEY AUTO_INCREMENT, 
 nombreCliente VARCHAR(150), placa VARCHAR(10), telefono VARCHAR(15), 
@@ -27,7 +27,7 @@ CREATE VIEW historialTareas AS
 SELECT v.nombreCliente AS 'Nombre', v.placa AS 'Placa', v.modelo AS 'Modelo', 
 v.costo AS 'Costo', u.nombre AS 'Responsable' FROM usuarios u, vehiculos v
 JOIN tareas WHERE u.idUsuarios = tareas.fkidUsuarios AND v.idVehiculos = tareas.fkIdVehiculos AND tareas.estado = 3;
-
+SELECT * FROM historialTareas
 -- Vista para agregar un empleado
 CREATE VIEW agregarEmpleado AS
 SELECT u.nombre AS 'Nombre', u.nombreUsuario AS 'Nombre de usuario', u.correo AS 'Correo', u.contraseña AS 'Contraseña' 
@@ -90,6 +90,7 @@ END;;
 
 /*---------------------------Procedure Crud Vehiculos----------------------------------*/
 /*Insertar un vehiculo de un cliente*/
+CALL insertarVehiculo('prue','asda','575123','chevy','azul',NULL,1,80,null)
 delimiter ;;
 CREATE PROCEDURE insertarVehiculo( 
 IN _nombreCliente VARCHAR(150), 
@@ -141,6 +142,7 @@ END;;
 
 /*---------------------------Procedure Tareas----------------------------------*/
 /*Insertar una tarea a un empleado*/
+DROP PROCEDURE actualizarTarea
 delimiter ;;
 CREATE PROCEDURE insertarTarea(  
 IN _fkIdVehiculos INT, 
@@ -183,4 +185,4 @@ BEGIN
 	WHERE tareas.fkidUsuarios=usuarios.idUsuarios AND tareas.fkIdVehiculos = vehiculos.idVehiculos AND usuarios.nombre=_nombre AND tareas.estado!='Completada';
 END;;
 /*---------------------------Procedures TERMINADOS----------------------------------*/
-
+SELECT * FROM historialTareas
