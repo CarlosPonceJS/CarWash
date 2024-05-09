@@ -22,13 +22,14 @@
         <div class="first-column">
             <img src="images/Trofeo.png" alt="" class="my-image">
         </div>
-        <div class="animate__animated animate__slideInRight">
-            <span class="spani">Nombre:</span><span class="animate__animated animate__slideInRight">hola</span><br>
-            <span class="spani">Nombre de usuario:</span><span class="animate__animated animate__slideInLeft">#</span><br>
-            <span class="spani">Carros lavados:</span><span class="animate__animated animate__slideInLeft">#</span><br>
-            <span class="spani">Correo:</span><span class="animate__animated animate__slideInLeft">#</span><br>
-            <br><button id="btnGenerarReporte" class="btni" style="background-color: #5783BC;" >Reporte PDF</button></td>
-        </div>
+       <div class="animate__animated animate__slideInRight" id="GenerarReporte">
+    
+       <span class="spani">Nombre:</span><span class="animate__animated animate__slideInRight"><?php echo htmlspecialchars($resultadoEmpleado['nombre'] ?? 'No disponible'); ?></span><br>
+    <span class="spani">Nombre de usuario:</span><span class="animate__animated animate__slideInLeft"><?php echo htmlspecialchars($resultadoEmpleado['usuario'] ?? 'No disponible'); ?></span><br>
+    <span class="spani">Carros lavados:</span><span class="animate__animated animate__slideInLeft"><?php echo htmlspecialchars($resultadoEmpleado['carros'] ?? 'No disponible'); ?></span><br>
+    <span class="spani">Correo:</span><span class="animate__animated animate__slideInLeft"><?php echo htmlspecialchars($resultadoEmpleado['correo'] ?? 'No disponible'); ?></span><br> 
+    <br><button id="btnGenerarReporte" class="btni" style="background-color: #5783BC;" >Reporte PDF</button></td>
+        </div> 
     </div>
     <div class="div container" >
         <span>Responsable</span>
@@ -38,35 +39,47 @@
         </div>
     </div>
     <br>
-    <div class="div" id="">
-    <?php echo $resultado;?>
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Placa</th>
-                    <th>Modelo</th>
-                    <th>Costo</th>
-                    <th>Responsable</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="animate__animated animate__slideInUp">
-                    <td>Ejemplo Nombre</td>
-                    <td>Ejemplo Placa</td>
-                    <td>Ejemplo Modelo</td>
-                    <td>Ejemplo Costo</td>
-                    <td>Ejemplo Responsable</td>
-                </tr>
-            </tbody>
-        </table> -->
+    <div class="div" id="GenerarPdf">
+    <?php echo $resultadoTareas; ?>
+      
     </div>
     <br>
     <div class="div container">
-    <button  class="btni" style="background-color: #5783BC;" id="">Reporte del historial de tareas</button>
+    <button  class="btni" style="background-color: #5783BC;" id="btnGenerarPDF">Reporte</button>
     </div>
-   
+   <script type="text/javascript" src="jspdf.min.js"></script>
+   <script type="text/javascript">
+
+document.getElementById('btnGenerarPDF').addEventListener('click', function() {
+    var doc = new jsPDF();
     
+    let content = document.getElementById('GenerarPdf').innerHTML;
+   
+    // Opcional: eliminar cualquier tag script que pueda haber sido inyectado
+    content = content.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+
+    doc.fromHTML(content, 15, 15, {
+        'width': 177, // ajustar al ancho de tu PDF
+    });
+    doc.save('Informacion.pdf');
+});
+    </script>
+    <script type="text/javascript">
+
+document.getElementById('btnGenerarReporte').addEventListener('click', function() {
+    var doc = new jsPDF();
+    
+    let content = document.getElementById('GenerarReporte').innerHTML;
+   
+    // Opcional: eliminar cualquier tag script que pueda haber sido inyectado
+    content = content.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+
+    doc.fromHTML(content, 15, 15, {
+        'width': 177, // ajustar al ancho de tu PDF
+    });
+    doc.save('Informacion.pdf');
+});
+    </script>
     <script>
         function search() {
             var searchValue = document.getElementById('search').value;

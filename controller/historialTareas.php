@@ -3,12 +3,16 @@
 session_start();
 require_once 'helpers.php';
 require 'libreria/historialTareas.php';
-$p = array();
-$p['resultado'] = '';
 $c = new historialDeTareas();
+$resultadoTareas = $c->mostrarHistorialTareas('%');
+$resultadoEmpleado = $c->obtenerEmpleadoDelDia('%');
 
-$p['resultado']=$c->mostrarHistorialTareas('%');
-$view = 'historialTareas'; 
+// Preparar los datos para la vista
+$viewData = [
+    'resultadoTareas' => $resultadoTareas,
+    'resultadoEmpleado' => $resultadoEmpleado
+];
 
-View($view, $p);
+View('historialTareas', $viewData);
+
 ?>
