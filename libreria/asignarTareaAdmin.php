@@ -41,7 +41,7 @@
                     $rs .= "</select>
                     </td>
                     <td>
-                        <form method='post' action='' class='formAsignacion'>
+                        <form method='post' action=''>
                             <button class='btni' style='background-color: #7DF89F;'>Asignar</button>
                             <input type='hidden' name='_id' value='" . $id . "'>
                             
