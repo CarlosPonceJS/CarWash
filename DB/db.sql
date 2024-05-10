@@ -36,9 +36,10 @@ FROM usuarios u;
 
 -- Vista para ver las tareas que no han sido asignadas y asignarlas al usuario.
 CREATE VIEW tareasPorAsignar AS
-SELECT v.idVehiculos, v.nombreCliente AS Nombre, v.placa AS Placa, v.modelo AS Modelo FROM vehiculos v
+SELECT v.idVehiculos, v.nombreCliente AS Nombre, v.placa AS Placa, v.modelo AS Modelo, u.nombreUsuario AS Responsable  FROM vehiculos v
 LEFT JOIN tareas t ON v.idVehiculos = t.fkIdVehiculos LEFT JOIN usuarios u ON t.fkidUsuarios = u.idUsuarios WHERE t.estado IS NULL;
-
+SELECT * FROM tareasporasignar
+DROP VIEW tareasPorAsignar
 -- Vista para ver el emplado del dia
 CREATE VIEW empleadoDelDia AS
 SELECT u.nombre AS 'Nombre',u.nombreUsuario AS 'Nombre de usuario',COUNT(*) AS 'Carros lavados',u.correo AS Correo
@@ -97,7 +98,7 @@ END;;
 /*---------------------------Procedure Crud Vehiculos----------------------------------*/
 /*Insertar un vehiculo de un cliente*/
 
-
+CALL insertarVehiculo('el pepe','asd','123123','suru',1,NULL,1,80,NULL);
 delimiter ;;
 CREATE PROCEDURE insertarVehiculo( 
 IN _nombreCliente VARCHAR(150), 
@@ -150,6 +151,7 @@ END;;
 
 /*---------------------------Procedure Tareas----------------------------------*/
 /*Insertar una tarea a un empleado*/
+SELECT * FROM usuarios,vehiculos
 
 delimiter ;;
 CREATE PROCEDURE insertarTarea(  
