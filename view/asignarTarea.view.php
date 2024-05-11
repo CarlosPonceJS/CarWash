@@ -18,7 +18,9 @@
 <body>
     <br><br><br>
     <div class="div">
-        <table>
+        <?php echo $resultado;?>
+        
+        <!-- <table>
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -29,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí se mostrarían los datos de la tabla -->
+                 Aquí se mostrarían los datos de la tabla 
                 <tr class="animate__animated animate__slideInUp" id="Tarea1">
                     <td>Ejemplo Nombre</td>
                     <td>Ejemplo Placa</td>
@@ -44,7 +46,7 @@
                     <td><button class="btni" style="background-color: #7DF89F;" onclick="mostrarModal(this, 'Tarea1')" >Asignar</button></td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
     </div>
     <div id="modal" class="modal">
         <div class="modal-content">
@@ -70,5 +72,17 @@
             document.getElementById('modal').style.display = 'none';
         }
     </script>
+    <script>
+    function updateResponsable() {
+        var selectElement = document.querySelector('.nuevoSelect');
+        var selectedUserId = selectElement.value;
+        document.getElementById('userIdField').value = selectedUserId;
+        console.log('Usuario Seleccionado (ID): ' + selectedUserId);
+    }
+
+    // Agrega un listener al evento 'change' del <select> para capturar cambios
+    var selectElement = document.querySelector('.nuevoSelect');
+    selectElement.addEventListener('change', updateResponsable);
+</script>
 </body>
 </html>

@@ -2,7 +2,7 @@ CREATE DATABASE carwash;
 CREATE TABLE usuarios(idUsuarios INT PRIMARY KEY AUTO_INCREMENT, 
 nombre VARCHAR(150), nombreUsuario VARCHAR(15),
 correo VARCHAR(50), contraseña VARCHAR(20));
-
+USE carwash;
 
 CREATE TABLE vehiculos(idVehiculos INT PRIMARY KEY AUTO_INCREMENT, 
 nombreCliente VARCHAR(150), placa VARCHAR(10), telefono VARCHAR(15), 
@@ -24,9 +24,10 @@ FLUSH PRIVILEGES;
 
 /*------------------------------------ VISTAS -----------------------------------------------*/
 -- VIsta para visualizar el historial de tareas y ventas.
+
 CREATE VIEW historialTareas AS
 SELECT v.nombreCliente AS 'Nombre', v.placa AS 'Placa', v.modelo AS 'Modelo', 
-v.costo AS 'Costo', u.nombre AS 'Responsable' FROM usuarios u, vehiculos v
+v.costo AS 'Costo', u.nombre AS 'Responsable', tareas.fecha AS 'Fecha' FROM usuarios u, vehiculos v
 JOIN tareas WHERE u.idUsuarios = tareas.fkidUsuarios AND v.idVehiculos = tareas.fkIdVehiculos AND tareas.estado = 3;
 
 -- Vista para agregar un empleado
@@ -36,10 +37,16 @@ FROM usuarios u;
 
 -- Vista para ver las tareas que no han sido asignadas y asignarlas al usuario.
 CREATE VIEW tareasPorAsignar AS
-SELECT v.idVehiculos, v.nombreCliente AS Nombre, v.placa AS Placa, v.modelo AS Modelo FROM vehiculos v
+SELECT v.idVehiculos, v.nombreCliente AS Nombre, v.placa AS Placa, v.modelo AS Modelo, u.nombreUsuario AS Responsable  FROM vehiculos v
 LEFT JOIN tareas t ON v.idVehiculos = t.fkIdVehiculos LEFT JOIN usuarios u ON t.fkidUsuarios = u.idUsuarios WHERE t.estado IS NULL;
-
-
+SELECT * FROM tareasporasignar
+DROP VIEW tareasPorAsignar
+-- Vista para ver el emplado del dia
+CREATE VIEW empleadoDelDia AS
+SELECT u.nombre AS 'Nombre',u.nombreUsuario AS 'Nombre de usuario',COUNT(*) AS 'Carros lavados',u.correo AS Correo
+FROM usuarios u JOIN tareas t ON u.idUsuarios = t.fkidUsuarios WHERE DATE(t.fecha) = CURDATE() 
+AND t.estado = 'Completada' GROUP BY u.idUsuarios, u.nombre, u.nombreUsuario, u.correo
+ORDER BY COUNT(*) DESC LIMIT 1;
 /*---------------------------Vistas TERMINADAS----------------------------------*/
 
 /*---------------------------Procedure Crud Usuarios----------------------------------*/
@@ -91,6 +98,8 @@ END;;
 
 /*---------------------------Procedure Crud Vehiculos----------------------------------*/
 /*Insertar un vehiculo de un cliente*/
+
+CALL insertarVehiculo('el pepe','asd','123123','suru',1,NULL,1,80,NULL);
 delimiter ;;
 CREATE PROCEDURE insertarVehiculo( 
 IN _nombreCliente VARCHAR(150), 
@@ -140,8 +149,12 @@ BEGIN
 SELECT v.nombreCliente,v.telefono,v.foto,v.turno,v.costo  FROM vehiculos v  WHERE v.nombreCliente  LIKE _filtro;
 END;;
 
+
 /*---------------------------Procedure Tareas----------------------------------*/
 /*Insertar una tarea a un empleado*/
+SELECT * FROM usuarios,vehiculos
+SELECT * FROM tareas;
+SELECT * FROM tareasporasignar;
 delimiter ;;
 CREATE PROCEDURE insertarTarea(  
 IN _fkIdVehiculos INT, 
@@ -149,7 +162,9 @@ IN _fkidUsuarios INT,
 IN _estado ENUM('Asignada','En proceso','Completada'),
 IN _idTareas INT)
 BEGIN 
-INSERT INTO tareas VALUES(NULL,_fkIdVehiculos,_fkidUsuarios, _estado);
+ DECLARE currentDate VARCHAR(25);
+    SET currentDate = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'); 
+INSERT INTO tareas VALUES(NULL,_fkIdVehiculos,_fkidUsuarios, _estado,currentDate);
 END;;
 
 /*Actualizar una tarea*/
