@@ -1,5 +1,6 @@
 <?php
     class empleado {
+
         //SINGLETON
         public static function obtenerModulo(){
             if(!self::$modulo)

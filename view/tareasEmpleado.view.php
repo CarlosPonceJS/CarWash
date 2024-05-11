@@ -22,38 +22,26 @@
 
 <body>
     <div id="tablaContenedor" style="display: none;">
-        <table class="contenedor">
+        <table class="contenedor" class="animate_animated">
             <thead>
                 <tr>
                     <th>Imagen</th>
                     <th>Placas</th>
                     <th>Dueño</th>
                     <th>Acciones</th>
+
                 </tr>
             </thead>
             <tbody>
-            <tr id="carro1" class="animate__animated">
-            <td><img src="./images/autoPrueba.webp" alt="Carro 1" class="auto-imagen" style="max-width: 20rem; height: auto;"></td>
-                <td>ABC-123</td>
-                <td>Juan Pérez</td>
-                <td><button class="btn btnSubmit" onclick="mostrarModal(this, 'carro1')">Realizar</button></td>
-            </tr>
-            <tr id="carro2" class="animate__animated tr-oculto">
-            <td><img src="./images/autoPrueba.webp" alt="Carro 1" class="auto-imagen" style="max-width: 20rem; height: auto;"></td>
-                <td>DEF-456</td>
-                <td>María Rodríguez</td>
-                <td><button class="btn btnSubmit" onclick="mostrarModal(this, 'carro2')">Realizar</button></td>
-            </tr>
-
-
-
-                <!-- Agregar lógica de la base de datos, tiren paro equipo de back end-->
+            <?php echo $resultado?>
             </tbody>
         </table>
     </div>
 
-
-    <div id="modal" class="modal">
+    <div id="modal" class="modal" >
+        <!--Input invisible para guardar id -->
+        <input type="hidden" name="actividad_id" id="actividad_id">
+        
         <div class="modal-content">
             <div class="modal-header">
                 <h2>ATENCIÓN</h2>
@@ -77,7 +65,7 @@
                 <p id="modal-message-finalizar">¿Estás seguro de finalizar la actividad?</p>
             </div>
             <div class="modal-footer">
-                <button id="confirmarFinalizar" class="btnModal" onclick="cerrarModalFinalizar()">Aceptar</button>
+                <button id="confirmarFinalizar"  class="btnModal" onclick="cerrarModalFinalizar()">Aceptar</button>
                 <button id="cancelarFinalizar" class="btnCancel" onclick="cerrarModalFinalizar()">Cancelar</button>
             </div>
         </div>
@@ -87,10 +75,41 @@
         var currentActividadId;
         var currentButton;
 
+        function enviarId(id,boton) {
+            // Obtener id invisible que almacena el id
+            document.getElementById("actividad_id").value = id;
+            // Get the states of the buttons
+
+            // Crear una solicitud AJAX para casar con el php back end
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Mostrar si hay un error
+                        console.log("Request successful:", xhr.responseText);
+                    } else {
+                        console.error("Error:", xhr.status);
+                    }
+                }
+            }; 
+            //Ruta de la vista que contiene el código back end
+            xhr.open("POST", "/CarWash/tareasEmpleado", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            //Si un boton específico es presionado, manda el id y el boton que necesito
+            document.getElementById(boton).addEventListener("click", function(){
+
+                xhr.send(`actividad_id= ${id} &${boton}=`);
+                //Recargar página cuando el boton sea el de finalizar tarea
+                if(boton == "confirmarFinalizar")
+                location.reload();
+            });
+        }
+
         function mostrarModal(button, actividadId) {
             currentActividadId = actividadId;
             currentButton = button;
             document.getElementById('modal').style.display = 'flex';
+            enviarId(currentActividadId, "confirmarTarea");
         }
 
         function cerrarModal() {
@@ -99,7 +118,6 @@
 
         function empezarActividad() {
             // Aquí puedes agregar la lógica para empezar la actividad
-            console.log('Empezar actividad:', currentActividadId);
             // Cambiar texto del botón a 'Finalizar'
             currentButton.innerText = 'Finalizar';
             // Cambiar color de fondo de los botones con clase 'btnSubmit' a gris claro
@@ -110,6 +128,7 @@
                     btn.classList.add("btnGris");
                 }
             });
+
             // Cambiar clase del botón a 'btnFinalizar'
             currentButton.classList.remove('btnSubmit');
             currentButton.classList.add('btnFinalizar');
@@ -123,11 +142,13 @@
                     btn.disabled = true;
                 }
             });
+
             cerrarModal();
         }
 
         function mostrarModalFinalizar() {
             document.getElementById('modalFinalizar').style.display = 'flex';
+            enviarId(currentActividadId,"confirmarFinalizar");
         }
 
         function cerrarModalFinalizar() {
@@ -148,7 +169,7 @@
         setTimeout(() => {
             row.classList.add('animate__slideInLeft');
             if (index === 0) {
-                document.querySelector('.tr-oculto').classList.remove('tr-oculto');
+                //document.querySelector('.tr-oculto').classList.remove('tr-oculto');
             }
         }, index * 20);
     });

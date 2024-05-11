@@ -47,8 +47,8 @@
          <input required id="file-input" type="file" accept=".jpg, .jpeg, .png" name="foto" />
          <span id="file-name" class="file-name">Nombre del archivo: </span>
         </div>
-
-
+        <input type="hidden" id="turno" name="turno">
+        <input type="hidden" id="costo" name="costo">
         
         <div class="input-group" id="campoExtra">
         </div>
@@ -76,11 +76,41 @@
 
        
     </form>
+    <!-- Include jsPDF library -->
+    
 
     <script>
     document.addEventListener("DOMContentLoaded", function(){
         mostrarCampoExtra();
     })
+
+    document.getElementById('placasCliente').addEventListener('change', function(){
+        alert("HOLA")
+        descargarPDF();
+    });
+    //PDF
+    function descargarPDF() {
+    // Get input values from hidden inputs
+    var nombreCliente = document.getElementById('nombre');
+    var tipoVehiculo = document.getElementById('tipo_auto');
+    // var turno = document.getElementById('turno').value;
+    // var costo = document.getElementById('costo').value;
+
+        // Create a new PDF document
+        var doc = new jsPDF();
+        
+        // Add content to the PDF document
+        doc.text('Nombre del Cliente: ' + nombreCliente.value.trim(), 10, 10);
+        doc.text('Tipo de Vehículo: ' + tipoVehiculo.value.trim(), 10, 20);
+        // doc.text('Turno: ' + turno, 10, 30);
+        // doc.text('Costo: ' + costo, 10, 40);
+
+        // Save the PDF as a file
+        doc.save('turno_information.pdf');
+
+}
+
+
     function mostrarCampoExtra() {
     var tipoAuto = document.getElementById("tipoAutoCliente").value;
     var campoExtra = document.getElementById("campoExtra");

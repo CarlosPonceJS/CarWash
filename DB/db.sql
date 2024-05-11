@@ -18,6 +18,7 @@ GRANT SELECT, INSERT ON carwash.* TO 'empleado'@'localhost';
 GRANT EXECUTE ON PROCEDURE showVehiculo TO 'empleado'@'localhost';
 GRANT EXECUTE ON PROCEDURE insertarVehiculo TO 'empleado'@'localhost';
 GRANT EXECUTE ON PROCEDURE verTareasEmpleado TO 'empleado'@'localhost';
+GRANT EXECUTE ON PROCEDURE cambiarEstadoTarea TO 'empleado'@'localhost';
 FLUSH PRIVILEGES;
 /*----------------------------- FIN USUARIOS SQL ------------------------------------------------*/
 
@@ -179,8 +180,15 @@ END;;
 delimiter ;;
 CREATE PROCEDURE verTareasEmpleado(IN _nombre VARCHAR(100))
 BEGIN
-	SELECT vehiculos.foto AS 'Imagen', vehiculos.placa AS 'Placas', vehiculos.nombreCliente AS 'Dueño' FROM vehiculos JOIN tareas, usuarios 
+	SELECT vehiculos.idVehiculos, vehiculos.foto AS 'Imagen', vehiculos.placa AS 'Placas', vehiculos.nombreCliente AS 'Dueño' FROM vehiculos JOIN tareas, usuarios 
 	WHERE tareas.fkidUsuarios=usuarios.idUsuarios AND tareas.fkIdVehiculos = vehiculos.idVehiculos AND usuarios.nombre=_nombre AND tareas.estado!='Completada';
 END;;
-/*---------------------------Procedures TERMINADOS----------------------------------*/
 
+/*Marcar una tarea como finalizada o en proceso*/
+DROP PROCEDURE cambiarEstadoTarea
+delimiter ;;
+CREATE PROCEDURE cambiarEstadoTarea(IN _estado ENUM('Asignada','En proceso','Completada'), IN _id int)
+BEGIN
+	UPDATE tareas t SET t.estado = _estado WHERE t.fkIdVehiculos = _id;
+END;;
+/*---------------------------Procedures TERMINADOS----------------------------------*/

@@ -23,6 +23,9 @@ if(isset($_POST['nombre'])) {
     $rutaDefecto = $file['tmp_name'];
     $carpeta = "img/";
     
+    //Turno
+    // $turno = $empleado->generadorTurnos();
+    // $turno = $_POST['turno'];
 
     //Varable para usar la función mostrar dependiendo del vehiculo que se llame
     $vehiculo = mostradorVehiculos::Mostrar($tipo);
