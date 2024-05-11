@@ -72,5 +72,17 @@
             document.getElementById('modal').style.display = 'none';
         }
     </script>
+    <script>
+    function updateResponsable() {
+        var selectElement = document.querySelector('.nuevoSelect');
+        var selectedUserId = selectElement.value;
+        document.getElementById('userIdField').value = selectedUserId;
+        console.log('Usuario Seleccionado (ID): ' + selectedUserId);
+    }
+
+    // Agrega un listener al evento 'change' del <select> para capturar cambios
+    var selectElement = document.querySelector('.nuevoSelect');
+    selectElement.addEventListener('change', updateResponsable);
+</script>
 </body>
 </html>

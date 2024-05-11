@@ -152,7 +152,8 @@ END;;
 /*---------------------------Procedure Tareas----------------------------------*/
 /*Insertar una tarea a un empleado*/
 SELECT * FROM usuarios,vehiculos
-
+SELECT * FROM tareas;
+SELECT * FROM tareasporasignar;
 delimiter ;;
 CREATE PROCEDURE insertarTarea(  
 IN _fkIdVehiculos INT, 
