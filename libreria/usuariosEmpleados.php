@@ -24,7 +24,7 @@
                 $q->execute();
                 $q->bind_result($id,$nombre,$nombreUsuario,$correo,$contraseña);
                 $rs = '<table class="table table-bordered table-striped">
-                <thead><th>nombre</th><th>nombreUsuario</th><th>correo</th><th>contraseña</th></thead><tbody>';
+                <thead><th>nombre</th><th>nombreUsuario</th><th>correo</th><th>contraseña</th><th>acción</th><th>acción</th></thead><tbody>';
                     while ($q->fetch()) {
                         $rs .= "<tr>
                         <td>$nombre</td>
@@ -33,14 +33,13 @@
                         <td>$contraseña</td>
                         <td>
                             <form method='post' action=''>
-                            <button> Eliminar </button>
-
+                            <button class='btni' style='background-color: #F87D7D;' onclick='mostrarModal(this, 'empleado1')'>Eliminar</button>
                             <input type='hidden' name='_id' value='" . $id . "'>
                             </form>
 					    </td>
 					    <td>
                             <form method='post' action='editarUsuariosEmpleados'>
-                            <button> editar </button>
+                            <button class='btni Editar' style='background-color: #7DF89F;'>Editar</button>                            
                             
                             <input type='hidden' name='idUsuarios' value='" . $id . "'>
                             </form>					    

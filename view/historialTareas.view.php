@@ -61,7 +61,7 @@ document.getElementById('btnGenerarPDF').addEventListener('click', function() {
     doc.fromHTML(content, 15, 15, {
         'width': 177, // ajustar al ancho de tu PDF
     });
-    doc.save('Informacion.pdf');
+    doc.save('InformacionHistorial.pdf');
 });
     </script>
     <script type="text/javascript">
@@ -77,7 +77,7 @@ document.getElementById('btnGenerarReporte').addEventListener('click', function(
     doc.fromHTML(content, 15, 15, {
         'width': 177, // ajustar al ancho de tu PDF
     });
-    doc.save('Informacion.pdf');
+    doc.save('InformacionEmpleadoDelDia.pdf');
 });
     </script>
     <script>
