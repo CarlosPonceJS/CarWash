@@ -26,7 +26,7 @@
                 <a href="asignarTarea">Asignar Tarea</a>
                 <a href="historialTareas">Historial de Tareas</a>
             <?php } ?>
-                <a href="/CarWash/home" onclick="recargar()" >Cerrar Sesión</a>
+                <a href="home" onclick="recargar()" >Cerrar Sesión</a>
             </ul>
         </nav>
     </header>

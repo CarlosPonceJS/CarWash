@@ -79,7 +79,7 @@
         function cerrarModal() {
             document.getElementById('modal').style.display = 'none';
         }
-
+        </script>
         <script>
     document.addEventListener('DOMContentLoaded', function() {
         var rows = document.querySelectorAll('tbody tr');
@@ -92,6 +92,6 @@
 </script>
 
 
-    </script>
+
 </body>
 </html>

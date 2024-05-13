@@ -22,8 +22,5 @@ if(isset($_POST['usuario'])){
     }
 }
 View('home');
-// Suponiendo que obtenemos los permisos de la bd. esto lo hace el back jijij
-$tipoUsuario = obtenerTipoUsuario();
-//'tipoUsuario' => $tipoUsuario
 
 ?>

@@ -93,7 +93,7 @@
                 }
             }; 
             //Ruta de la vista que contiene el código back end
-            xhr.open("POST", "/CarWash/tareasEmpleado", true);
+            xhr.open("POST", "tareasEmpleado", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             //Si un boton específico es presionado, manda el id y el boton que necesito
             document.getElementById(boton).addEventListener("click", function(){
