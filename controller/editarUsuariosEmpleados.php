@@ -13,7 +13,8 @@ if (isset($_POST['idUsuarios']) && !isset($_POST['usuario'])) {
     $dc = $c->GetDatos($_POST['idUsuarios']); // Asumiendo que devuelve un array con los datos.
     $p['resultado'] = $dc; // Pasar los datos a la vista
 } elseif (isset($_POST['nombre'], $_POST['usuario'], $_POST['correo'], $_POST['contrasena'])) {
-    $resultado = $c->Editar($_POST['idUsuarios'], $_POST['nombre'], $_POST['usuario'], $_POST['correo'], $_POST['contrasena']);  
+    $resultado = $c->Editar($_POST['idUsuarios'], $_POST['nombre'], $_POST['usuario'], $_POST['correo'], $_POST['contrasena']);
+    header("Location: crudEmpleado");   
    
 }
 

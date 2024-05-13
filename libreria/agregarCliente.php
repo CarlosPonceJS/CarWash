@@ -1,4 +1,5 @@
 <?php
+    require_once('tcpdf/tcpdf.php');
     class empleado {
 
         //SINGLETON
@@ -40,5 +41,39 @@
             $consulta->execute();
             $consulta->close();
         }
+
+        function imprimirPDF($nombre, $tipo, $turnos, $costo) {
+            $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+
+            $pdf->SetCreator(PDF_CREATOR);
+            $pdf->SetAuthor('Your Name');
+            $pdf->SetTitle('Información del Cliente');
+            $pdf->SetSubject('Información del Cliente');
+            $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+
+            $pdf->setPrintHeader(false);
+            $pdf->setPrintFooter(false);
+
+            $pdf->AddPage();
+
+            // Agregar el contenido al PDF
+            $content = "
+                <h1>Ticket de compra</h1>
+                <p><strong>Nombre:</strong> $nombre</p>
+                <p><strong>Tipo de vehículo:</strong> $tipo</p>
+                <p><strong>Turno:</strong> $turnos</p>
+                <p><strong>Costo:</strong> $costo</p>
+            ";
+
+            $pdf->writeHTML($content, true, false, true, false, '');
+
+            // Nombre del archivo
+            $filename = 'ticket'.$nombre.''.$turnos.'.pdf';
+
+            // Salida del PDF
+            $pdf->Output($filename, 'D');
+            echo $pdf;
+        }
+
     }
 ?>

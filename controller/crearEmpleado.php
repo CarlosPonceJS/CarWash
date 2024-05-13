@@ -13,6 +13,7 @@ require 'libreria/usuariosEmpleados.php';
 	{
 	$c->insertarUsuario($_POST['nombre'],$_POST['usuario'],$_POST['correo'],$_POST['contrasena']);	
 	$p['resultado']=$c->mostrarUsuariosEmpleados('%');
+	header("Location: crudEmpleado");
 	}
 $view = 'crearEmpleado';
 

@@ -22,10 +22,6 @@ if(isset($_POST['nombre'])) {
     $nombreImagen = $file['name'];
     $rutaDefecto = $file['tmp_name'];
     $carpeta = "img/";
-    
-    //Turno
-    // $turno = $empleado->generadorTurnos();
-    // $turno = $_POST['turno'];
 
     //Varable para usar la función mostrar dependiendo del vehiculo que se llame
     $vehiculo = mostradorVehiculos::Mostrar($tipo);
@@ -42,13 +38,19 @@ if(isset($_POST['nombre'])) {
 
         $empleado->agregarCliente($_POST['nombre'], $_POST['placas'], $_POST['telefono'], $tipo, $vehiculo->puertas, $imagen, $empleado->generadorTurnos(), $vehiculo->operacionCosto());
 
+        $pdf_content = $empleado->imprimirPDF($_POST['nombre'], $tipo, $empleado->generadorTurnos(), $vehiculo->operacionCosto());
+
     } elseif($tipo == "camion") {
         $vehiculo->longitud = $_POST['longitud'];
 
         $empleado->agregarCliente($_POST['nombre'], $_POST['placas'], $_POST['telefono'], $tipo,$vehiculo->longitud, $imagen, $empleado->generadorTurnos(), $vehiculo->operacionCosto());
 
+        $empleado->imprimirPDF($_POST['nombre'], $tipo, $empleado->generadorTurnos(), $vehiculo->operacionCosto());
+
     } elseif($tipo == "auto") {
         $empleado->agregarCliente($_POST['nombre'], $_POST['placas'], $_POST['telefono'], $tipo,$vehiculo->piezas, $imagen, $empleado->generadorTurnos(), $vehiculo->operacionCosto());
+
+        $empleado->imprimirPDF($_POST['nombre'], $tipo, $empleado->generadorTurnos(), $vehiculo->operacionCosto());
     }
 }
 

@@ -20,33 +20,6 @@
     <div class="div">
         <?php echo $resultado;?>
         
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Placa</th>
-                    <th>Modelo</th>
-                    <th>Responsable</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                 Aquí se mostrarían los datos de la tabla 
-                <tr class="animate__animated animate__slideInUp" id="Tarea1">
-                    <td>Ejemplo Nombre</td>
-                    <td>Ejemplo Placa</td>
-                    <td>Ejemplo Modelo</td>
-                    <td>    
-                        <select class="nuevoSelect" name="empleadoEncargado" id="empleadoEncargado">
-                            <option value="Juan">Juan</option>
-                            <option value="Ulises">Ulises</option>
-                            <option value="Carlos">Carlos</option>
-                        </select>
-                    </td>
-                    <td><button class="btni" style="background-color: #7DF89F;" onclick="mostrarModal(this, 'Tarea1')" >Asignar</button></td>
-                </tr>
-            </tbody>
-        </table> -->
     </div>
     <div id="modal" class="modal">
         <div class="modal-content">

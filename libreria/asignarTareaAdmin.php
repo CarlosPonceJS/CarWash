@@ -14,6 +14,8 @@
                 $q->close();
                 return 'Se guardo correctamente';
             }
+
+            
             
             public function mostrarTareasSinAsignar($fil)
             {
@@ -22,7 +24,7 @@
                 
                 // Primero, obtener los usuarios disponibles
                 $usuarios = array();
-                $queryUsuarios = "SELECT idUsuarios, nombreUsuario FROM usuarios"; 
+                $queryUsuarios = "SELECT idUsuarios, nombreUsuario FROM usuarios where nombreUsuario !='admin'"; 
                 if ($resultadoUsuarios = $con->query($queryUsuarios)) {
                     while ($row = $resultadoUsuarios->fetch_assoc()) {
                         $usuarios[] = $row;

@@ -7,9 +7,6 @@ require 'libreria/tareasEmpleado.php';
 $view = 'tareasEmpleado'; 
 $empleado = new empleado();
 
-// Check if the request method is POST
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(isset($_POST["confirmarTarea"])){
@@ -22,9 +19,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $empleado->cambiarEstadoTarea(3, $id);
     }
 }
+//Variable para obtener la variable de sesion usuario.
+$usuario = "";
+//Si la variable de sesion existe
+if(isset($_SESSION['usuario'])){
+    //usuario = esa variable de sesion
+    $usuario = $_SESSION['usuario'];
+}
 
 // Always show the table
-$p['resultado'] = $empleado->Mostrar('Carlos');
+$p['resultado'] = $empleado->Mostrar($usuario);
 
 View($view, $p);
 ?>
